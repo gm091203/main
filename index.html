@@ -630,10 +630,10 @@
             document.getElementById('result-address').innerText = address;
             document.getElementById('result-photo').src = photoSrc;
 
-            // Generate dynamic QR code based on user info (Instant via Google Chart API)
+            // Generate dynamic QR code based on user info (Instant via QuickChart API)
             const qrData = `M_${name}_${rrn1}_${new Date().getTime()}`;
             const qrArea = document.querySelector('.qr-area');
-            qrArea.innerHTML = `<img src="https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=${encodeURIComponent(qrData)}" alt="QR Code">`;
+            qrArea.innerHTML = `<img src="https://quickchart.io/qr?size=150&text=${encodeURIComponent(qrData)}" alt="QR Code">`;
 
             // Detail View Data
             document.getElementById('detail-photo').src = photoSrc;

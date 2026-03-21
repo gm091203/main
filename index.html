@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" href="icon.png">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
 
 <body>
@@ -631,18 +630,10 @@
             document.getElementById('result-address').innerText = address;
             document.getElementById('result-photo').src = photoSrc;
 
-            // Generate dynamic QR code based on user info (Instant local generation)
+            // Generate dynamic QR code based on user info (Instant via Google Chart API)
             const qrData = `M_${name}_${rrn1}_${new Date().getTime()}`;
             const qrArea = document.querySelector('.qr-area');
-            qrArea.innerHTML = ''; // Clear previous/placeholder QR
-            new QRCode(qrArea, {
-                text: qrData,
-                width: 150,
-                height: 150,
-                colorDark: "#000000",
-                colorLight: "#ffffff",
-                correctLevel: QRCode.CorrectLevel.L
-            });
+            qrArea.innerHTML = `<img src="https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=${encodeURIComponent(qrData)}" alt="QR Code">`;
 
             // Detail View Data
             document.getElementById('detail-photo').src = photoSrc;

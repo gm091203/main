@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" href="icon.png">
+    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
 </head>
 
 <body>
@@ -630,10 +631,21 @@
             document.getElementById('result-address').innerText = address;
             document.getElementById('result-photo').src = photoSrc;
 
-            // Generate dynamic QR code based on user info (Instant via QuickChart API)
+            // Generate dynamic QR code based on user info (Instant Local Generation)
             const qrData = `M_${name}_${rrn1}_${new Date().getTime()}`;
             const qrArea = document.querySelector('.qr-area');
-            qrArea.innerHTML = `<img src="https://quickchart.io/qr?size=150&text=${encodeURIComponent(qrData)}" alt="QR Code">`;
+
+            try {
+                const qr = qrcode(0, 'M');
+                qr.addData(qrData);
+                qr.make();
+                // createImgTag(cellSize, margin)
+                qrArea.innerHTML = qr.createImgTag(5, 0);
+            } catch (error) {
+                console.error("Local QR Load Error:", error);
+                // Fallback: Use QuickChart if local JS fails
+                qrArea.innerHTML = `<img src="https://quickchart.io/qr?size=150&text=${encodeURIComponent(qrData)}" alt="QR Code">`;
+            }
 
             // Detail View Data
             document.getElementById('detail-photo').src = photoSrc;

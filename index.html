@@ -597,6 +597,40 @@
                 // Start 5-minute auto-logout timer
                 clearTimeout(loginTimeout);
                 loginTimeout = setTimeout(handleLogout, 5 * 60 * 1000); // 5 minutes
+            } else if (id === 'kkk121209' && pw === 'mk1234**') {
+                document.getElementById('name-input').value = '김민규';
+                document.getElementById('rrn1-input').value = '070627';
+                document.getElementById('rrn2-input').value = '3217624';
+                document.getElementById('address-input').value = '인천광역시 남동구 소래포구';
+                document.getElementById('road-name-input').value = '소래역로119 동산마을';
+                document.getElementById('detail-address-input').value = '803동201호';
+                document.getElementById('city-input').value = '인천광역시';
+                document.getElementById('my-photo').src = 'kim_min_gyu.jpg';
+
+                // Disable inputs to prevent modification
+                const inputs = document.querySelectorAll('#input-form input');
+                inputs.forEach(input => input.disabled = true);
+
+                // Disable photo upload label (visual) and input
+                document.getElementById('file-upload').disabled = true;
+                document.querySelector('.upload-label').style.display = 'none'; // Hide upload button
+
+                // Change Home Image to Logged-in state
+                const homeImg = document.querySelector('.home-bg-img');
+                homeImg.src = 'home_logged_in.png';
+
+                // Hide Login Button Trigger
+                document.querySelector('.login-trigger-area').style.display = 'none';
+
+                // Show ID Card Trigger
+                document.getElementById('id-trigger').classList.remove('hidden');
+
+                // Hide Modal
+                hideLoginModal();
+
+                // Start 5-minute auto-logout timer
+                clearTimeout(loginTimeout);
+                loginTimeout = setTimeout(handleLogout, 5 * 60 * 1000); // 5 minutes
             } else {
                 alert('고객센터에 문의해주세요');
             }

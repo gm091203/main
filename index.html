@@ -216,8 +216,8 @@
         }
         function handleLogin() {
             // Simple validation or just proceed
-            const id = document.getElementById('login-id').value;
-            const pw = document.getElementById('login-pw').value;
+            const id = document.getElementById('login-id').value.trim();
+            const pw = document.getElementById('login-pw').value.trim();
 
             // Check for specific credentials to autofill
             if (id === 'khyfool' && pw === 'khyfool@1') {

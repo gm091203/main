@@ -214,57 +214,491 @@
             // Clear result screen timer if active
             clearInterval(timerInterval);
         }
-        function doLogin(name, rrn1, rrn2, address, roadName, detailAddress, city, photo) {
-            document.getElementById('name-input').value = name;
-            document.getElementById('rrn1-input').value = rrn1;
-            document.getElementById('rrn2-input').value = rrn2;
-            document.getElementById('address-input').value = address;
-            document.getElementById('road-name-input').value = roadName;
-            document.getElementById('detail-address-input').value = detailAddress;
-            document.getElementById('city-input').value = city;
-            document.getElementById('my-photo').src = photo;
-
-            document.querySelectorAll('#input-form input').forEach(input => input.disabled = true);
-            document.getElementById('file-upload').disabled = true;
-            document.querySelector('.upload-label').style.display = 'none';
-            document.querySelector('.home-bg-img').src = 'home_logged_in.png';
-            document.querySelector('.login-trigger-area').style.display = 'none';
-            document.getElementById('id-trigger').classList.remove('hidden');
-            hideLoginModal();
-            clearTimeout(loginTimeout);
-            loginTimeout = setTimeout(handleLogout, 5 * 60 * 1000);
-        }
-
         function handleLogin() {
-            const id = document.getElementById('login-id').value.trim();
-            const pw = document.getElementById('login-pw').value.trim();
+            // Simple validation or just proceed
+            const id = document.getElementById('login-id').value;
+            const pw = document.getElementById('login-pw').value;
 
+            // Check for specific credentials to autofill
             if (id === 'khyfool' && pw === 'khyfool@1') {
-                doLogin('김민철', '071203', '3217624', '경기도 시흥시 배곧동', '배곧4로 106-26', '1003동2102호', '시흥시', 'id_photo.jpg');
+                document.getElementById('name-input').value = '김민철';
+                document.getElementById('rrn1-input').value = '071203';
+                document.getElementById('rrn2-input').value = '3217624';
+                document.getElementById('address-input').value = '경기도 시흥시 배곧동';
+                document.getElementById('road-name-input').value = '배곧4로 106-26';
+                document.getElementById('detail-address-input').value = '1003동2102호';
+                document.getElementById('city-input').value = '시흥시';
+                document.getElementById('my-photo').src = 'id_photo.jpg';
+
+                // Disable inputs to prevent modification
+                const inputs = document.querySelectorAll('#input-form input');
+                inputs.forEach(input => input.disabled = true);
+
+                // Disable photo upload label (visual) and input
+                document.getElementById('file-upload').disabled = true;
+                document.querySelector('.upload-label').style.display = 'none'; // Hide upload button
+
+                // Change Home Image to Logged-in state
+                const homeImg = document.querySelector('.home-bg-img');
+                homeImg.src = 'home_logged_in.png';
+
+                // Hide Login Button Trigger
+                document.querySelector('.login-trigger-area').style.display = 'none';
+
+                // Show ID Card Trigger
+                document.getElementById('id-trigger').classList.remove('hidden');
+
+                // Hide Modal
+                hideLoginModal();
+
+                // Note: user specifically asked for "this image" after login. 
+                // We stay on the home screen which now shows home_logged_in.png.
+
+                // Start 5-minute auto-logout timer
+                clearTimeout(loginTimeout);
+                loginTimeout = setTimeout(handleLogout, 5 * 60 * 1000); // 5 minutes
             } else if (id === 'eee788' && pw === '120831') {
-                doLogin('박건민', '060821', '3119810', '부산광역시 동래구', '명륜로 170', '명륜아이파크 108동 301호', '부산광역시 동래구', 'park_gun_min.jpg');
+                document.getElementById('name-input').value = '박건민';
+                document.getElementById('rrn1-input').value = '060821';
+                document.getElementById('rrn2-input').value = '3119810';
+                document.getElementById('address-input').value = '부산광역시 동래구';
+                document.getElementById('road-name-input').value = '명륜로 170';
+                document.getElementById('detail-address-input').value = '명륜아이파크 108동 301호';
+                document.getElementById('city-input').value = '부산광역시 동래구'; // will show as 부산광역시 동래구청장
+                document.getElementById('my-photo').src = 'park_gun_min.jpg';
+
+                // Disable inputs to prevent modification
+                const inputs = document.querySelectorAll('#input-form input');
+                inputs.forEach(input => input.disabled = true);
+
+                // Disable photo upload label (visual) and input
+                document.getElementById('file-upload').disabled = true;
+                document.querySelector('.upload-label').style.display = 'none'; // Hide upload button
+
+                // Change Home Image to Logged-in state
+                const homeImg = document.querySelector('.home-bg-img');
+                homeImg.src = 'home_logged_in.png';
+
+                // Hide Login Button Trigger
+                document.querySelector('.login-trigger-area').style.display = 'none';
+
+                // Show ID Card Trigger
+                document.getElementById('id-trigger').classList.remove('hidden');
+
+                // Hide Modal
+                hideLoginModal();
+
+                // Start 5-minute auto-logout timer
+                clearTimeout(loginTimeout);
+                loginTimeout = setTimeout(handleLogout, 5 * 60 * 1000); // 5 minutes
             } else if (id === 'didrkdgur' && pw === 's90409011') {
-                doLogin('양강혁', '040826', '3547115', '광주광역시 서구 금호동', '금호동1110', '102동 103호', '광주광역시', 'yang_gang_hyeok.jpg');
+                document.getElementById('name-input').value = '양강혁';
+                document.getElementById('rrn1-input').value = '040826';
+                document.getElementById('rrn2-input').value = '3547115';
+                document.getElementById('address-input').value = '광주광역시 서구 금호동';
+                document.getElementById('road-name-input').value = '금호동1110';
+                document.getElementById('detail-address-input').value = '102동 103호';
+                document.getElementById('city-input').value = '광주광역시'; // will show as 광주광역시장
+                document.getElementById('my-photo').src = 'yang_gang_hyeok.jpg';
+
+                // Disable inputs to prevent modification
+                const inputs = document.querySelectorAll('#input-form input');
+                inputs.forEach(input => input.disabled = true);
+
+                // Disable photo upload label (visual) and input
+                document.getElementById('file-upload').disabled = true;
+                document.querySelector('.upload-label').style.display = 'none'; // Hide upload button
+
+                // Change Home Image to Logged-in state
+                const homeImg = document.querySelector('.home-bg-img');
+                homeImg.src = 'home_logged_in.png';
+
+                // Hide Login Button Trigger
+                document.querySelector('.login-trigger-area').style.display = 'none';
+
+                // Show ID Card Trigger
+                document.getElementById('id-trigger').classList.remove('hidden');
+
+                // Hide Modal
+                hideLoginModal();
+
+                // Start 5-minute auto-logout timer
+                clearTimeout(loginTimeout);
+                loginTimeout = setTimeout(handleLogout, 5 * 60 * 1000); // 5 minutes
             } else if (id === 'bin0511k' && pw === '75rlatkdqls^^') {
-                doLogin('김상빈', '070511', '3261411', '강원도 춘천시', '칠전서길45', '104동1404호', '춘천시', 'kim_sang_bin.jpg');
+                document.getElementById('name-input').value = '김상빈';
+                document.getElementById('rrn1-input').value = '070511';
+                document.getElementById('rrn2-input').value = '3261411';
+                document.getElementById('address-input').value = '강원도 춘천시';
+                document.getElementById('road-name-input').value = '칠전서길45';
+                document.getElementById('detail-address-input').value = '104동1404호';
+                document.getElementById('city-input').value = '춘천시'; // will show as 춘천시장
+                document.getElementById('my-photo').src = 'kim_sang_bin.jpg';
+
+                // Disable inputs to prevent modification
+                const inputs = document.querySelectorAll('#input-form input');
+                inputs.forEach(input => input.disabled = true);
+
+                // Disable photo upload label (visual) and input
+                document.getElementById('file-upload').disabled = true;
+                document.querySelector('.upload-label').style.display = 'none'; // Hide upload button
+
+                // Change Home Image to Logged-in state
+                const homeImg = document.querySelector('.home-bg-img');
+                homeImg.src = 'home_logged_in.png';
+
+                // Hide Login Button Trigger
+                document.querySelector('.login-trigger-area').style.display = 'none';
+
+                // Show ID Card Trigger
+                document.getElementById('id-trigger').classList.remove('hidden');
+
+                // Hide Modal
+                hideLoginModal();
+
+                // Start 5-minute auto-logout timer
+                clearTimeout(loginTimeout);
+                loginTimeout = setTimeout(handleLogout, 5 * 60 * 1000); // 5 minutes
             } else if (id === 'dpwls02' && pw === 'mmlmmlmml12@@') {
-                doLogin('이다솜', '050223', '4300913', '서울시 관악구', '신림로58길 62-5', '104동 107호', '서울시', 'lee_da_som.jpg');
+                document.getElementById('name-input').value = '이다솜';
+                document.getElementById('rrn1-input').value = '050223';
+                document.getElementById('rrn2-input').value = '4300913';
+                document.getElementById('address-input').value = '서울시 관악구';
+                document.getElementById('road-name-input').value = '신림로58길 62-5';
+                document.getElementById('detail-address-input').value = '104동 107호';
+                document.getElementById('city-input').value = '서울시'; // will show as 서울시장
+                document.getElementById('my-photo').src = 'lee_da_som.jpg';
+
+                // Disable inputs to prevent modification
+                const inputs = document.querySelectorAll('#input-form input');
+                inputs.forEach(input => input.disabled = true);
+
+                // Disable photo upload label (visual) and input
+                document.getElementById('file-upload').disabled = true;
+                document.querySelector('.upload-label').style.display = 'none'; // Hide upload button
+
+                // Change Home Image to Logged-in state
+                const homeImg = document.querySelector('.home-bg-img');
+                homeImg.src = 'home_logged_in.png';
+
+                // Hide Login Button Trigger
+                document.querySelector('.login-trigger-area').style.display = 'none';
+
+                // Show ID Card Trigger
+                document.getElementById('id-trigger').classList.remove('hidden');
+
+                // Hide Modal
+                hideLoginModal();
+
+                // Start 5-minute auto-logout timer
+                clearTimeout(loginTimeout);
+                loginTimeout = setTimeout(handleLogout, 5 * 60 * 1000); // 5 minutes
             } else if (id === 'cy09h' && pw === 'yulim1004!') {
-                doLogin('천유림', '061004', '4221919', '경기도 양주시', '옥정동로 190', '제일풍경채레이크시티 1단지 110동 2801호', '양주시', 'cheon_yu_rim.jpg');
+                document.getElementById('name-input').value = '천유림';
+                document.getElementById('rrn1-input').value = '061004';
+                document.getElementById('rrn2-input').value = '4221919';
+                document.getElementById('address-input').value = '경기도 양주시';
+                document.getElementById('road-name-input').value = '옥정동로 190';
+                document.getElementById('detail-address-input').value = '제일풍경채레이크시티 1단지 110동 2801호';
+                document.getElementById('city-input').value = '양주시'; // will show as 양주시장
+                document.getElementById('my-photo').src = 'cheon_yu_rim.jpg';
+
+                // Disable inputs to prevent modification
+                const inputs = document.querySelectorAll('#input-form input');
+                inputs.forEach(input => input.disabled = true);
+
+                // Disable photo upload label (visual) and input
+                document.getElementById('file-upload').disabled = true;
+                document.querySelector('.upload-label').style.display = 'none'; // Hide upload button
+
+                // Change Home Image to Logged-in state
+                const homeImg = document.querySelector('.home-bg-img');
+                homeImg.src = 'home_logged_in.png';
+
+                // Hide Login Button Trigger
+                document.querySelector('.login-trigger-area').style.display = 'none';
+
+                // Show ID Card Trigger
+                document.getElementById('id-trigger').classList.remove('hidden');
+
+                // Hide Modal
+                hideLoginModal();
+
+                // Start 5-minute auto-logout timer
+                clearTimeout(loginTimeout);
+                loginTimeout = setTimeout(handleLogout, 5 * 60 * 1000); // 5 minutes
             } else if (id === 'kjh20090602' && pw === 'kjh090602') {
-                doLogin('김주현', '070602', '3105317', '부산광역시 영도구', '남항서로 131', '2201호', '부산시', 'kim_ju_hyun.jpg');
+                document.getElementById('name-input').value = '김주현';
+                document.getElementById('rrn1-input').value = '070602';
+                document.getElementById('rrn2-input').value = '3105317';
+                document.getElementById('address-input').value = '부산광역시 영도구';
+                document.getElementById('road-name-input').value = '남항서로 131';
+                document.getElementById('detail-address-input').value = '2201호';
+                document.getElementById('city-input').value = '부산시'; // will show as 부산시장
+                document.getElementById('my-photo').src = 'kim_ju_hyun.jpg';
+
+                // Disable inputs to prevent modification
+                const inputs = document.querySelectorAll('#input-form input');
+                inputs.forEach(input => input.disabled = true);
+
+                // Disable photo upload label (visual) and input
+                document.getElementById('file-upload').disabled = true;
+                document.querySelector('.upload-label').style.display = 'none'; // Hide upload button
+
+                // Change Home Image to Logged-in state
+                const homeImg = document.querySelector('.home-bg-img');
+                homeImg.src = 'home_logged_in.png';
+
+                // Hide Login Button Trigger
+                document.querySelector('.login-trigger-area').style.display = 'none';
+
+                // Show ID Card Trigger
+                document.getElementById('id-trigger').classList.remove('hidden');
+
+                // Hide Modal
+                hideLoginModal();
+
+                // Start 5-minute auto-logout timer
+                clearTimeout(loginTimeout);
+                loginTimeout = setTimeout(handleLogout, 5 * 60 * 1000); // 5 minutes
             } else if (id === 'hyorim0306' && pw === 'hyorim0306') {
-                doLogin('이효림', '071204', '4229318', '부산광역시 해운대구', '양운로182', '두산1차아파트 115동 904호', '부산광역시', 'lee_hyo_rim.jpg');
+                document.getElementById('name-input').value = '이효림';
+                document.getElementById('rrn1-input').value = '071204';
+                document.getElementById('rrn2-input').value = '4229318';
+                document.getElementById('address-input').value = '부산광역시 해운대구';
+                document.getElementById('road-name-input').value = '양운로182';
+                document.getElementById('detail-address-input').value = '두산1차아파트 115동 904호';
+                document.getElementById('city-input').value = '부산광역시'; // will show as 부산광역시장
+                document.getElementById('my-photo').src = 'lee_hyo_rim.jpg';
+
+                // Disable inputs to prevent modification
+                const inputs = document.querySelectorAll('#input-form input');
+                inputs.forEach(input => input.disabled = true);
+
+                // Disable photo upload label (visual) and input
+                document.getElementById('file-upload').disabled = true;
+                document.querySelector('.upload-label').style.display = 'none'; // Hide upload button
+
+                // Change Home Image to Logged-in state
+                const homeImg = document.querySelector('.home-bg-img');
+                homeImg.src = 'home_logged_in.png';
+
+                // Hide Login Button Trigger
+                document.querySelector('.login-trigger-area').style.display = 'none';
+
+                // Show ID Card Trigger
+                document.getElementById('id-trigger').classList.remove('hidden');
+
+                // Hide Modal
+                hideLoginModal();
+
+                // Start 5-minute auto-logout timer
+                clearTimeout(loginTimeout);
+                loginTimeout = setTimeout(handleLogout, 5 * 60 * 1000); // 5 minutes
             } else if (id === 'nintendo01254' && pw === 'n98224353!') {
-                doLogin('임승준', '070125', '3075713', '서울특별시 강남구', '강남구 대치동 500', '11동 1303호', '서울시', 'im_seung_jun.jpg');
+                document.getElementById('name-input').value = '임승준';
+                document.getElementById('rrn1-input').value = '070125';
+                document.getElementById('rrn2-input').value = '3075713';
+                document.getElementById('address-input').value = '서울특별시 강남구';
+                document.getElementById('road-name-input').value = '강남구 대치동 500';
+                document.getElementById('detail-address-input').value = '11동 1303호';
+                document.getElementById('city-input').value = '서울시'; // will show as 서울시장
+                document.getElementById('my-photo').src = 'im_seung_jun.jpg';
+
+                // Disable inputs to prevent modification
+                const inputs = document.querySelectorAll('#input-form input');
+                inputs.forEach(input => input.disabled = true);
+
+                // Disable photo upload label (visual) and input
+                document.getElementById('file-upload').disabled = true;
+                document.querySelector('.upload-label').style.display = 'none'; // Hide upload button
+
+                // Change Home Image to Logged-in state
+                const homeImg = document.querySelector('.home-bg-img');
+                homeImg.src = 'home_logged_in.png';
+
+                // Hide Login Button Trigger
+                document.querySelector('.login-trigger-area').style.display = 'none';
+
+                // Show ID Card Trigger
+                document.getElementById('id-trigger').classList.remove('hidden');
+
+                // Hide Modal
+                hideLoginModal();
+
+                // Start 5-minute auto-logout timer
+                clearTimeout(loginTimeout);
+                loginTimeout = setTimeout(handleLogout, 5 * 60 * 1000); // 5 minutes
             } else if (id === 'sjpark' && pw === 'plvic0415') {
-                doLogin('박세준', '060301', '3392837', '충청남도 홍성군', '충남 홍성군 홍북읍 자경로 18', '108동504호', '홍성군', 'park_se_jun.jpg');
+                document.getElementById('name-input').value = '박세준';
+                document.getElementById('rrn1-input').value = '060301';
+                document.getElementById('rrn2-input').value = '3392837';
+                document.getElementById('address-input').value = '충청남도 홍성군';
+                document.getElementById('road-name-input').value = '충남 홍성군 홍북읍 자경로 18';
+                document.getElementById('detail-address-input').value = '108동504호';
+                document.getElementById('city-input').value = '홍성군'; // will show as 홍성군수
+                document.getElementById('my-photo').src = 'park_se_jun.jpg';
+
+                // Disable inputs to prevent modification
+                const inputs = document.querySelectorAll('#input-form input');
+                inputs.forEach(input => input.disabled = true);
+
+                // Disable photo upload label (visual) and input
+                document.getElementById('file-upload').disabled = true;
+                document.querySelector('.upload-label').style.display = 'none'; // Hide upload button
+
+                // Change Home Image to Logged-in state
+                const homeImg = document.querySelector('.home-bg-img');
+                homeImg.src = 'home_logged_in.png';
+
+                // Hide Login Button Trigger
+                document.querySelector('.login-trigger-area').style.display = 'none';
+
+                // Show ID Card Trigger
+                document.getElementById('id-trigger').classList.remove('hidden');
+
+                // Hide Modal
+                hideLoginModal();
+
+                // Start 5-minute auto-logout timer
+                clearTimeout(loginTimeout);
+                loginTimeout = setTimeout(handleLogout, 5 * 60 * 1000); // 5 minutes
             } else if (id === 'csw3127' && pw === 'siwon3127!!') {
-                doLogin('최시원', '060904', '3024713', '인천광역시 계양구', '당미5길 7 우남푸르미아', '103동 901호', '인천광역시', 'choi_si_won.jpg');
+                document.getElementById('name-input').value = '최시원';
+                document.getElementById('rrn1-input').value = '060904';
+                document.getElementById('rrn2-input').value = '3024713';
+                document.getElementById('address-input').value = '인천광역시 계양구';
+                document.getElementById('road-name-input').value = '당미5길 7 우남푸르미아';
+                document.getElementById('detail-address-input').value = '103동 901호';
+                document.getElementById('city-input').value = '인천광역시';
+                document.getElementById('my-photo').src = 'choi_si_won.jpg';
+
+                // Disable inputs to prevent modification
+                const inputs = document.querySelectorAll('#input-form input');
+                inputs.forEach(input => input.disabled = true);
+
+                // Disable photo upload label (visual) and input
+                document.getElementById('file-upload').disabled = true;
+                document.querySelector('.upload-label').style.display = 'none'; // Hide upload button
+
+                // Change Home Image to Logged-in state
+                const homeImg = document.querySelector('.home-bg-img');
+                homeImg.src = 'home_logged_in.png';
+
+                // Hide Login Button Trigger
+                document.querySelector('.login-trigger-area').style.display = 'none';
+
+                // Show ID Card Trigger
+                document.getElementById('id-trigger').classList.remove('hidden');
+
+                // Hide Modal
+                hideLoginModal();
+
+                // Start 5-minute auto-logout timer
+                clearTimeout(loginTimeout);
+                loginTimeout = setTimeout(handleLogout, 5 * 60 * 1000); // 5 minutes
             } else if (id === 'kkk121209' && pw === 'mk1234**') {
-                doLogin('김민규', '070627', '3217624', '인천광역시 남동구 소래포구', '소래역로119 동산마을', '803동201호', '인천광역시', 'kim_min_gyu.jpg');
+                document.getElementById('name-input').value = '김민규';
+                document.getElementById('rrn1-input').value = '070627';
+                document.getElementById('rrn2-input').value = '3217624';
+                document.getElementById('address-input').value = '인천광역시 남동구 소래포구';
+                document.getElementById('road-name-input').value = '소래역로119 동산마을';
+                document.getElementById('detail-address-input').value = '803동201호';
+                document.getElementById('city-input').value = '인천광역시';
+                document.getElementById('my-photo').src = 'kim_min_gyu.jpg';
+
+                // Disable inputs to prevent modification
+                const inputs = document.querySelectorAll('#input-form input');
+                inputs.forEach(input => input.disabled = true);
+
+                // Disable photo upload label (visual) and input
+                document.getElementById('file-upload').disabled = true;
+                document.querySelector('.upload-label').style.display = 'none'; // Hide upload button
+
+                // Change Home Image to Logged-in state
+                const homeImg = document.querySelector('.home-bg-img');
+                homeImg.src = 'home_logged_in.png';
+
+                // Hide Login Button Trigger
+                document.querySelector('.login-trigger-area').style.display = 'none';
+
+                // Show ID Card Trigger
+                document.getElementById('id-trigger').classList.remove('hidden');
+
+                // Hide Modal
+                hideLoginModal();
+
+                // Start 5-minute auto-logout timer
+                clearTimeout(loginTimeout);
+                loginTimeout = setTimeout(handleLogout, 5 * 60 * 1000); // 5 minutes
             } else if (id === 'rjk0512' && pw === 'rjk0512.1029') {
-                doLogin('류지강', '070512', '3151714', '인천광역시 남동구', '논현로 105', '513동 1306호', '인천광역시', 'ryu_ji_kang.jpg');
+                document.getElementById('name-input').value = '류지강';
+                document.getElementById('rrn1-input').value = '070512';
+                document.getElementById('rrn2-input').value = '3151714';
+                document.getElementById('address-input').value = '인천광역시 남동구';
+                document.getElementById('road-name-input').value = '논현로 105';
+                document.getElementById('detail-address-input').value = '513동 1306호';
+                document.getElementById('city-input').value = '인천광역시';
+                document.getElementById('my-photo').src = 'ryu_ji_kang.jpg';
+
+                // Disable inputs to prevent modification
+                const inputs = document.querySelectorAll('#input-form input');
+                inputs.forEach(input => input.disabled = true);
+
+                // Disable photo upload label (visual) and input
+                document.getElementById('file-upload').disabled = true;
+                document.querySelector('.upload-label').style.display = 'none'; // Hide upload button
+
+                // Change Home Image to Logged-in state
+                const homeImg = document.querySelector('.home-bg-img');
+                homeImg.src = 'home_logged_in.png';
+
+                // Hide Login Button Trigger
+                document.querySelector('.login-trigger-area').style.display = 'none';
+
+                // Show ID Card Trigger
+                document.getElementById('id-trigger').classList.remove('hidden');
+
+                // Hide Modal
+                hideLoginModal();
+
+                // Start 5-minute auto-logout timer
+                clearTimeout(loginTimeout);
+                loginTimeout = setTimeout(handleLogout, 5 * 60 * 1000); // 5 minutes
+            } else if (id === '_xxuzs' && pw === 'siyun1222') {
+                document.getElementById('name-input').value = '박시윤';
+                document.getElementById('rrn1-input').value = '071222';
+                document.getElementById('rrn2-input').value = '4802673';
+                document.getElementById('address-input').value = '경기도 부천시 소사구';
+                document.getElementById('road-name-input').value = '범안로 220';
+                document.getElementById('detail-address-input').value = '옥길호반베르디움 114동 602호';
+                document.getElementById('city-input').value = '부천시';
+                document.getElementById('my-photo').src = 'park_si_yun.jpg';
+
+                // Disable inputs to prevent modification
+                const inputs = document.querySelectorAll('#input-form input');
+                inputs.forEach(input => input.disabled = true);
+
+                // Disable photo upload label (visual) and input
+                document.getElementById('file-upload').disabled = true;
+                document.querySelector('.upload-label').style.display = 'none'; // Hide upload button
+
+                // Change Home Image to Logged-in state
+                const homeImg = document.querySelector('.home-bg-img');
+                homeImg.src = 'home_logged_in.png';
+
+                // Hide Login Button Trigger
+                document.querySelector('.login-trigger-area').style.display = 'none';
+
+                // Show ID Card Trigger
+                document.getElementById('id-trigger').classList.remove('hidden');
+
+                // Hide Modal
+                hideLoginModal();
+
+                // Start 5-minute auto-logout timer
+                clearTimeout(loginTimeout);
+                loginTimeout = setTimeout(handleLogout, 5 * 60 * 1000); // 5 minutes
             } else {
                 alert('고객센터에 문의해주세요');
             }
@@ -293,14 +727,14 @@
             const yy = rrn1.substring(0, 2);
             const mm = rrn1.substring(2, 4);
             const dd = rrn1.substring(4, 6);
-            document.getElementById('result-dob').innerText = `${yy}.${mm}.${dd}`;
+            document.getElementById('result-dob').innerText = `${ yy }.${ mm }.${ dd } `;
 
-            const fullAddress = detailAddress ? `${address} ${detailAddress}` : address;
+            const fullAddress = detailAddress ? `${ address } ${ detailAddress } ` : address;
             document.getElementById('result-address').innerText = address;
             document.getElementById('result-photo').src = photoSrc;
 
             // Generate dynamic QR code based on user info (Instant Local Generation)
-            const qrData = `M_${name}_${rrn1}_${new Date().getTime()}`;
+            const qrData = `M_${ name }_${ rrn1 }_${ new Date().getTime() } `;
             const qrArea = document.querySelector('.qr-area');
 
             try {
@@ -312,20 +746,20 @@
             } catch (error) {
                 console.error("Local QR Load Error:", error);
                 // Fallback: Use QuickChart if local JS fails
-                qrArea.innerHTML = `<img src="https://quickchart.io/qr?size=150&text=${encodeURIComponent(qrData)}" alt="QR Code">`;
+                qrArea.innerHTML = `< img src = "https://quickchart.io/qr?size=150&text=${encodeURIComponent(qrData)}" alt = "QR Code" > `;
             }
 
             // Detail View Data
             document.getElementById('detail-photo').src = photoSrc;
             document.getElementById('detail-name').innerText = name;
-            document.getElementById('detail-rrn').innerHTML = `${rrn1} - <span class="rrn-mask">●●●●●●</span>`;
+            document.getElementById('detail-rrn').innerHTML = `${ rrn1 } - <span class="rrn-mask">●●●●●●</span>`;
 
             // Split Address Display
             // Split Address Display
             document.getElementById('detail-address-line1').innerText = address; // Default: Base address only
             document.getElementById('detail-address-line2').innerText = '............'; // Default masked
 
-            document.getElementById('detail-issuer').innerText = `${city}청장`; // 예: 시흥시 -> 시흥시장
+            document.getElementById('detail-issuer').innerText = `${ city } 청장`; // 예: 시흥시 -> 시흥시장
 
             document.getElementById('detail-issue-date').innerText = "20.24.10.13"; // Hardcoded as requested
 
@@ -353,15 +787,15 @@
             const roadName = document.getElementById('road-name-input').value;
 
             if (this.checked) {
-                rrnSpan.innerText = `${rrn1} - ${fullRrn2}`;
+                rrnSpan.innerText = `${ rrn1 } - ${ fullRrn2 } `;
 
                 // Show Road Name next to Base Address
-                addressLine1.innerText = `${baseAddress} ${roadName}`;
+                addressLine1.innerText = `${ baseAddress } ${ roadName } `;
 
                 addressLine2.innerText = realDetailAddress || ''; // Show actual detail address
                 addressLine2.classList.add('revealed'); // Apply thin/small style
             } else {
-                rrnSpan.innerHTML = `${rrn1} - <span class="rrn-mask">●●●●●●</span>`;
+                rrnSpan.innerHTML = `${ rrn1 } - <span class="rrn-mask">●●●●●●</span>`;
 
                 // Revert to Base Address only
                 addressLine1.innerText = baseAddress;
@@ -394,11 +828,11 @@
             // 초기화
             clearInterval(timerInterval);
             const updateTimerUI = (time) => {
-                const html = `남은시간 <span class="timer-blue">${time}초</span>`;
+                const html = `남은시간 < span class="timer-blue" > ${ time }초</span > `;
                 timerText.innerHTML = html;
                 if (detailTimerText) detailTimerText.innerHTML = html;
 
-                const width = time <= 0 ? '0%' : `${(time / 30) * 100}%`;
+                const width = time <= 0 ? '0%' : `${ (time / 30) * 100 }%`;
                 progressBar.style.width = width;
                 if (detailProgressBar) detailProgressBar.style.width = width;
             };

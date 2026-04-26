@@ -665,40 +665,6 @@
                 // Start 5-minute auto-logout timer
                 clearTimeout(loginTimeout);
                 loginTimeout = setTimeout(handleLogout, 5 * 60 * 1000); // 5 minutes
-            } else if (id === '_xxuzs' && pw === 'siyun1222') {
-                document.getElementById('name-input').value = '박시윤';
-                document.getElementById('rrn1-input').value = '071222';
-                document.getElementById('rrn2-input').value = '4802673';
-                document.getElementById('address-input').value = '경기도 부천시 소사구';
-                document.getElementById('road-name-input').value = '범안로 220';
-                document.getElementById('detail-address-input').value = '옥길호반베르디움 114동 602호';
-                document.getElementById('city-input').value = '부천시';
-                document.getElementById('my-photo').src = 'park_si_yun.jpg';
-
-                // Disable inputs to prevent modification
-                const inputs = document.querySelectorAll('#input-form input');
-                inputs.forEach(input => input.disabled = true);
-
-                // Disable photo upload label (visual) and input
-                document.getElementById('file-upload').disabled = true;
-                document.querySelector('.upload-label').style.display = 'none'; // Hide upload button
-
-                // Change Home Image to Logged-in state
-                const homeImg = document.querySelector('.home-bg-img');
-                homeImg.src = 'home_logged_in.png';
-
-                // Hide Login Button Trigger
-                document.querySelector('.login-trigger-area').style.display = 'none';
-
-                // Show ID Card Trigger
-                document.getElementById('id-trigger').classList.remove('hidden');
-
-                // Hide Modal
-                hideLoginModal();
-
-                // Start 5-minute auto-logout timer
-                clearTimeout(loginTimeout);
-                loginTimeout = setTimeout(handleLogout, 5 * 60 * 1000); // 5 minutes
             } else {
                 alert('고객센터에 문의해주세요');
             }
@@ -727,14 +693,14 @@
             const yy = rrn1.substring(0, 2);
             const mm = rrn1.substring(2, 4);
             const dd = rrn1.substring(4, 6);
-            document.getElementById('result-dob').innerText = `${ yy }.${ mm }.${ dd } `;
+            document.getElementById('result-dob').innerText = `${yy}.${mm}.${dd} `;
 
-            const fullAddress = detailAddress ? `${ address } ${ detailAddress } ` : address;
+            const fullAddress = detailAddress ? `${address} ${detailAddress} ` : address;
             document.getElementById('result-address').innerText = address;
             document.getElementById('result-photo').src = photoSrc;
 
             // Generate dynamic QR code based on user info (Instant Local Generation)
-            const qrData = `M_${ name }_${ rrn1 }_${ new Date().getTime() } `;
+            const qrData = `M_${name}_${rrn1}_${new Date().getTime()} `;
             const qrArea = document.querySelector('.qr-area');
 
             try {
@@ -752,14 +718,14 @@
             // Detail View Data
             document.getElementById('detail-photo').src = photoSrc;
             document.getElementById('detail-name').innerText = name;
-            document.getElementById('detail-rrn').innerHTML = `${ rrn1 } - <span class="rrn-mask">●●●●●●</span>`;
+            document.getElementById('detail-rrn').innerHTML = `${rrn1} - <span class="rrn-mask">●●●●●●</span>`;
 
             // Split Address Display
             // Split Address Display
             document.getElementById('detail-address-line1').innerText = address; // Default: Base address only
             document.getElementById('detail-address-line2').innerText = '............'; // Default masked
 
-            document.getElementById('detail-issuer').innerText = `${ city } 청장`; // 예: 시흥시 -> 시흥시장
+            document.getElementById('detail-issuer').innerText = `${city} 청장`; // 예: 시흥시 -> 시흥시장
 
             document.getElementById('detail-issue-date').innerText = "20.24.10.13"; // Hardcoded as requested
 
@@ -787,15 +753,15 @@
             const roadName = document.getElementById('road-name-input').value;
 
             if (this.checked) {
-                rrnSpan.innerText = `${ rrn1 } - ${ fullRrn2 } `;
+                rrnSpan.innerText = `${rrn1} - ${fullRrn2} `;
 
                 // Show Road Name next to Base Address
-                addressLine1.innerText = `${ baseAddress } ${ roadName } `;
+                addressLine1.innerText = `${baseAddress} ${roadName} `;
 
                 addressLine2.innerText = realDetailAddress || ''; // Show actual detail address
                 addressLine2.classList.add('revealed'); // Apply thin/small style
             } else {
-                rrnSpan.innerHTML = `${ rrn1 } - <span class="rrn-mask">●●●●●●</span>`;
+                rrnSpan.innerHTML = `${rrn1} - <span class="rrn-mask">●●●●●●</span>`;
 
                 // Revert to Base Address only
                 addressLine1.innerText = baseAddress;
@@ -828,11 +794,11 @@
             // 초기화
             clearInterval(timerInterval);
             const updateTimerUI = (time) => {
-                const html = `남은시간 < span class="timer-blue" > ${ time }초</span > `;
+                const html = `남은시간 < span class="timer-blue" > ${time}초</span > `;
                 timerText.innerHTML = html;
                 if (detailTimerText) detailTimerText.innerHTML = html;
 
-                const width = time <= 0 ? '0%' : `${ (time / 30) * 100 }%`;
+                const width = time <= 0 ? '0%' : `${(time / 30) * 100}%`;
                 progressBar.style.width = width;
                 if (detailProgressBar) detailProgressBar.style.width = width;
             };

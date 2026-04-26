@@ -1,0 +1,16 @@
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   index.html
+	deleted:    park_si_yun.jpg
+	deleted:    ryu_ji_kang.jpg
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	987811.png
+	status.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
